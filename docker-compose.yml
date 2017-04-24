@@ -1,0 +1,14 @@
+server:
+  build: ./app
+  ports:
+    - 5000:5000
+  volumes:
+    - ./app:/go/src/github.com/iulianR/transacto/app
+  links:
+    - database
+  environment:
+    - DATABASE_NAME=transacto
+
+database:
+  image: mongo:latest
+  user: mongodb
